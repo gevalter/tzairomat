@@ -1,0 +1,101 @@
+/* General Stuff*/
+
+body {margin: 0;}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    margin-bottom: 50px;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+.active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
+.gcontent {
+    margin: auto;
+}
+@media screen and (max-width: 600px){
+    ul.topnav li.right,
+    ul.topnav li {float: none;}
+}
+
+/* Home Page*/
+
+.disappeared{
+    visibility: hidden;
+}
+
+.UpperButtons {
+    margin-left: 50%;
+    margin-right: 50%;
+    display: inline;
+}
+
+/* Question Page*/
+
+.topic_dropdown{
+    margin-left: 50%;
+    margin-right: 50%;
+    display: inline;
+}
+
+my-search-menu {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.question_div {
+    direction: rtl;
+    font-family: Arial;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+    -ms-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+    background-color: #ffffff;
+    border: 0;
+    color: #212121;
+}
+
+.question {
+    font-size: 25px;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-top: 5px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.answer {
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.clicked {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.que-actions-div{
+    margin-top: -10px;
+    float: left;
+}
+
+.que-actions-button{
+    background-color: #85C1E9;
+}

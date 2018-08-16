@@ -1,0 +1,74 @@
+<!-- Try 5: Bootstrap accordion with handlebars array 
+<div class="panel-group" style="margin: 1%" id="accordion" role="tablist" aria-multiselectable="true">
+  {{# each questions }}
+  <div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="{{@index}}">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{ this.id }}" aria-expanded="true" aria-controls="{{ this.id }}">
+          {{ this.syntax }}
+        </a>
+      </h4>
+    </div>
+    <div id="{{ this.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{@index}}">
+      <div class="panel-body ">
+        {{ this.answer }}        
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div> -->
+
+<!-- Angular Search navbar 
+<div class="row">
+  <div class="col-md-offset-4 col-md-4">
+    <center>
+    <h1>AngularJS Search Navbar</h1>
+    <form method="POST" class="form-inline" class="my-search-menu">
+      <button ng-click="search()" class="btn btn-default glyphicon glyphicon-search" type="submit" style="background-color: #85C1E9;"></button>
+      <input style="direction: rtl" type="text" name="search_text" ng-model="formData.search_text" class="form-control" placeholder="Search" aria-describedby="sizing-addon3">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #85C1E9;">  נושאים  <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          {{# each topics }}
+            <li><a href="#">{{ this.name }}</a></li>
+          {{/each}}
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Search All</a></li>
+        </ul>
+      </div>
+    </form>
+    </center>
+  </div>
+  </div>  --
+  
+<!-- Try 2: Manually jquery accordion - Tabs are closing at runtime, this is shitty way of doing stuff  
+<div style="padding: 30px">
+  <div class="accordion question_div">
+    {{# each questions }}
+        <div class="question">{{ this.syntax }}</div>
+        <div class="answer">{{ this.answer }}</div>
+    {{/each}}
+  </div>
+  </div> --
+  
+<!-- Try 3: JqueryUI accordion - You can't close an open tab.. just by open another. 
+<div id="accordion" style="margin: 1%">
+  {{# each questions }}
+  <h3><a href="#">{{ this.syntax }}</a></h3>
+  <div>{{ this.answer }}</div>
+  {{/each}}
+  </div> --
+  
+<!-- Try 4: Angular accordion - NOT WORKING
+<div ng-controller="AccordionDemoCtrl">
+  <uib-accordion close-others=false>
+    {{# each questions }}
+        <div uib-accordion-group class="panel-default" heading={{ this.answer }}>
+          {{ this.syntax }}
+        </div>
+    {{/each}}
+  </uib-accordion>
+</div> -->
+
+
+

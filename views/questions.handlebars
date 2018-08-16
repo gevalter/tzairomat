@@ -1,0 +1,83 @@
+<div style="direction:rtl" ng-controller='questions'>
+  
+  <!-- Jquery Search navbar -->
+  <div class="row"> <!-- Container div for position  -->
+    <div class="col-md-offset-4 col-md-4">
+      <center>
+      <form action=/search class="form-inline my-search-menu" id="searchForm">
+        <button class="btn btn-default glyphicon glyphicon-search" type="submit" style="background-color: #85C1E9;"></button>
+        <input style="direction: rtl" type="text" name="search_text" class="form-control" placeholder="Search" aria-describedby="sizing-addon3">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #85C1E9;">  נושאים  <span class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-class="dropdown_topic_{($index)}" ng-click="dropdown_topic_click($index,topic)" class="btn" ng-repeat="topic in topics">{( topic.name )}</li>
+            <li role="separator" class="divider"></li>
+            <li class="btn" ng-class="dropdown_topic_all" ng-click="dropdown_all_topics_click()">Search All</li>
+          </ul>
+        </div>
+      </form>
+      </center>
+    </div>
+  </div>
+  
+  <!-- Try 1: Bootstrap accordion, Working perfectly! -->
+  <div class="panel-group" style="margin: 1%" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-primary" ng-repeat="question in questions">
+      <div class="panel-heading" role="tab" id="{($index)}">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#I{($index)}" aria-expanded="true" aria-controls="I{($index)}">
+            {( question.syntax )}
+          </a>
+          <div class="que-actions-div">
+            <button class="btn btn-default glyphicon glyphicon-trash que-actions-button" type="submit" data-toggle="modal" data-target="#deleteque" ng-click="open_delete_modal(question._id, $index)"></button>
+            <button class="btn btn-default glyphicon glyphicon-pencil que-actions-button" type="submit" data-toggle="modal" data-target="#editque"></button>
+          </div>
+        </h4>
+      </div>
+      <div id="I{($index)}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{($index)}">
+        <div class="panel-body ">
+          {( question.answer )}        
+        </div>
+      </div>
+    </div> 
+  </div>
+  
+  <!-- Delete question modal -->
+  <div class="modal fade" id="deleteque" tabindex="-1" role="dialog" aria-labelledby="topic-label">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" style="float:left" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="topic-label">מחק שאלה</h4>
+        </div>
+        <div class="modal-body">
+          <p>האם אתה בטוח שברצונך למחוק?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" ng-click="delete_question()" data-dismiss="modal" >Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Edit question modal-->
+  <div class="modal fade" id="editque" tabindex="-1" role="dialog" aria-labelledby="topic-label">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" style="float:left" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="topic-label">ערוך שאלה</h4>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

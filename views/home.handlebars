@@ -1,0 +1,88 @@
+<div class="container gcontent" ng-controller='main'>
+  <!-- Upper Buttons -->
+  <div class="UpperButtons">
+    <button style= "margin-left: -10%" type="button" id="QueButton" class="btn btn-success" data-toggle="modal" data-target="#AddQue">הכנס שאלה חדשה</button>
+    <button type="button" id="TopicButton" class="btn btn-success" data-toggle="modal" data-target="#AddTopic">הכנס נושא חדש</button>
+  </div>
+  
+  <center>
+  <img style= "margin-top: 1vw" src="/client/img/MainPic.jpg">
+  </center>
+  
+  <!-- lower buttons -->
+  <center style= "margin-top: 1vw">
+  <div class= "row btn-group" style= "width:100%">
+    <button type="button" class="btn btn-success" ng-click="ask_question()" style= "width:20%">שאל</button>
+    <div class= "btn-group" style= "width:80%" >
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style= "width:100%">נושאים</button>
+    <ul class="dropdown-menu" role="menu">
+      <li ng-class="dropdown_topic_{($index)}" ng-click="dropdown_topic_click($index,topic)" class="btn" ng-repeat="topic in topics">{( topic.name )}</li>
+      <li role="separator" class="divider"></li>
+      <li class="btn" ng-class="dropdown_topic_all" ng-click="dropdown_all_topics_click()">Search All</li>
+    </ul>
+  </div>
+  </div>
+  </center>
+  
+  <!-- Try 1: The Question -->
+  <div ng-class="question_div" style="margin: 1%" id="home_accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-primary" >
+      <div class="panel-heading" role="tab" id="question_ask_label">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#home_accordion" href="#question_ask_answer" aria-expanded="true" aria-controls="question_ask_answer">
+            {( asked_question.syntax )}
+          </a>
+        </h4>
+      </div>
+      <div id="question_ask_answer" class="panel-collapse collapse" role="tabpanel" aria-labelledby="question_ask_label">
+        <div class="panel-body ">
+          {( asked_question.answer )}        
+        </div>
+      </div>
+    </div> 
+  </div>
+  
+  <!-- add questions Modal -->
+  <div style="direction:rtl" class="modal fade" id="AddQue" tabindex="-1" role="dialog" aria-labelledby="que-label">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button style="float:left" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="que-label">הוסף שאלה</h4>
+        </div>
+        <div class="modal-body">
+          <form novalidate class="addque-form" method="post">
+            <p>שאלה</p>
+            <input type="text" ng-model="add_que_modal_syntax" required style="width: 96%">
+            <p>תשובה</p>
+            <textarea ng-model="add_que_modal_answer" required style="width: 96%" rows="2"></textarea>
+            <center>
+                <button type="button" ng-class="topic_button_{($index)}" ng-click="topic_click($index,topic)" class="btn" ng-repeat="topic in topics" style="margin: 1%">{( topic.name )}</button>
+            </center>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- add topics Modal -->
+  <div style="direction:rtl" class="modal fade" id="AddTopic" tabindex="-1" role="dialog" aria-labelledby="topic-label">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" style="float:left" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="topic-label">הוסף נושא</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" ng-model="add_topic_text" class="form-control" style="width: 96%" placeholder="Text input">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" ng-click="save_topic()" data-dismiss="modal" >Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
