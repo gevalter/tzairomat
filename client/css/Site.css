@@ -99,3 +99,17 @@ my-search-menu {
 .que-actions-button{
     background-color: #85C1E9;
 }
+
+.css-addque-form input.ng-invalid.ng-touched {
+    border-style: solid;
+    border-color: coral;
+}
+
+.add_que_modal_answer.ng-invalid.ng-touched {
+    border-style: solid;
+    border-color: coral;
+}
+
+.add_que_modal_width{
+    width: 96%;
+}

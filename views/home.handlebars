@@ -51,16 +51,31 @@
           <h4 class="modal-title" id="que-label">הוסף שאלה</h4>
         </div>
         <div class="modal-body">
-          <form novalidate class="addque-form" method="post">
+          <form novalidate name="addque-form" class="css-addque-form" method="post">
             <p>שאלה</p>
-            <input type="text" ng-model="add_que_modal_syntax" required style="width: 96%">
-            <p>תשובה</p>
-            <textarea ng-model="add_que_modal_answer" required style="width: 96%" rows="2"></textarea>
+            <input type="text" name="form_question_syntax" class="form-control" ng-model="add_que_modal_syntax" required="" style="width: 96%">
+            <br />
+            <div id='default_syntax_error_div'></div>
+            <div ng-if="!add_que_modal_syntax">
+              <div style="width: 96%"class="alert alert-danger">
+                <strong>נוסח שאלה זה שדה חובה</strong>
+              </div>
+            </div>
+            <p style="margin-top: 1%">תשובה</p>
+            <textarea name="form_question_answer" class="form-control add_que_modal_answer" ng-model="add_que_modal_answer" required="" style="width: 96%" rows="2"></textarea>
+            <br />
+            <div id='default_answer_error_div'></div>
+            <div ng-if="!add_que_modal_answer">
+              <div style="width: 96%" class="alert alert-danger">
+                <strong>תשובה זה שדה חובה</strong>
+              </div>
+            </div>
             <center>
                 <button type="button" ng-class="topic_button_{($index)}" ng-click="topic_click($index,topic)" class="btn" ng-repeat="topic in topics" style="margin: 1%">{( topic.name )}</button>
             </center>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <div id='topics_error_div'></div>
+            <button type="button" class="btn btn-default" id="addquebtnClose" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" ng-click="save_question()">Save changes</button>
           </form>
         </div>
       </div>
@@ -76,11 +91,20 @@
           <h4 class="modal-title" id="topic-label">הוסף נושא</h4>
         </div>
         <div class="modal-body">
-          <input type="text" ng-model="add_topic_text" class="form-control" style="width: 96%" placeholder="Text input">
+          <form novalidate name="addque-form" class="css-addque-form" method="post">
+            <input type="text" ng-model="add_topic_text" class="form-control" style="width: 96%">
+            <br />
+            <div id='default_topic_name_div'></div>
+            <div ng-if="!add_topic_text">
+              <div style="width: 96%" class="alert alert-danger">
+                <strong>אנא הכנס שם נושא</strong>
+              </div>
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" ng-click="save_topic()" data-dismiss="modal" >Save changes</button>
+          <button type="button" class="btn btn-default" id="addtopicbtnClose" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" ng-click="save_topic()">Save changes</button>
         </div>
       </div>
     </div>
